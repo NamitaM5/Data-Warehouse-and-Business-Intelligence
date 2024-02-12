@@ -1,0 +1,107 @@
+Microsoft Windows [Version 10.0.19042.746]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\Namita K Mahindrakar>cd ..
+
+C:\Users>cd ..
+
+C:\>cd temp
+
+C:\temp>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 6A45-006F
+
+ Directory of C:\temp
+
+02/08/2021  06:23 PM    <DIR>          .
+02/08/2021  06:23 PM    <DIR>          ..
+02/01/2021  10:14 AM       217,178,112 AdventureWorks2019.bak
+02/01/2021  10:14 AM       101,834,752 AdventureWorksDW2019.bak
+02/01/2021  10:14 AM         8,511,488 AdventureWorksLT2019.bak
+               3 File(s)    327,524,352 bytes
+               2 Dir(s)  11,403,124,736 bytes free
+
+C:\temp>bcp
+
+usage: bcp {dbtable | query} {in | out | queryout | format} datafile
+  [-m maxerrors]            [-f formatfile]          [-e errfile]
+  [-F firstrow]             [-L lastrow]             [-b batchsize]
+  [-n native type]          [-c character type]      [-w wide character type]
+  [-N keep non-text native] [-V file format version] [-q quoted identifier]
+  [-C code page specifier]  [-t field terminator]    [-r row terminator]
+  [-i inputfile]            [-o outfile]             [-a packetsize]
+  [-S server name]          [-U username]            [-P password]
+  [-T trusted connection]   [-v version]             [-R regional enable]
+  [-k keep null values]     [-E keep identity values][-G Azure Active Directory Authentication]
+  [-h "load hints"]         [-x generate xml format file]
+  [-d database name]        [-K application intent]  [-l login timeout]
+
+
+
+
+
+C:\temp>bcp Sales out c:\temp\salesout.csv -S DESKTOP-G4EPEH7\SQLSERVER2019 -d pubs -T
+
+Enter the file storage type of field stor_id [char]:
+Enter prefix-length of field stor_id [2]:
+Enter field terminator [none]: ,
+
+Enter the file storage type of field ord_num [char]:
+Enter prefix-length of field ord_num [2]:
+Enter field terminator [none]: ,
+
+Enter the file storage type of field ord_date [datetime]:
+Enter prefix-length of field ord_date [0]:
+Enter field terminator [none]: ,
+
+Enter the file storage type of field qty [smallint]:
+Enter prefix-length of field qty [0]:
+Enter field terminator [none]: ,
+
+Enter the file storage type of field payterms [char]:
+Enter prefix-length of field payterms [2]:
+Enter field terminator [none]: ,
+
+Enter the file storage type of field title_id [char]:
+Enter prefix-length of field title_id [2]:
+Enter field terminator [none]: ,
+
+Do you want to save this format information in a file? [Y/n] Y
+Host filename [bcp.fmt]: c:\temp\salesout.fmt
+
+Starting copy...
+
+21 rows copied.
+Network packet size (bytes): 4096
+Clock Time (ms.) Total     : 31     Average : (677.42 rows per sec.)
+
+C:\temp>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 6A45-006F
+
+ Directory of C:\temp
+
+02/08/2021  06:58 PM    <DIR>          .
+02/08/2021  06:58 PM    <DIR>          ..
+02/01/2021  10:14 AM       217,178,112 AdventureWorks2019.bak
+02/01/2021  10:14 AM       101,834,752 AdventureWorksDW2019.bak
+02/01/2021  10:14 AM         8,511,488 AdventureWorksLT2019.bak
+02/08/2021  06:58 PM               977 salesout.csv
+02/08/2021  06:58 PM               605 salesout.fmt
+               5 File(s)    327,525,934 bytes
+               2 Dir(s)  11,407,642,624 bytes free
+
+C:\temp>notepad salesout.csv
+
+
+
+C:\temp>bcp Sales out c:\temp\salesout.csv -c -S DESKTOP-G4EPEH7\SQLSERVER2019 -d pubs -T
+
+Starting copy...
+
+21 rows copied.
+Network packet size (bytes): 4096
+Clock Time (ms.) Total     : 16     Average : (1312.50 rows per sec.)
+
+C:\temp>notepad salesout.csv
+
